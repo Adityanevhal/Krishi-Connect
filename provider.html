@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KrishiConnect - Offer a Service</title>
+    <link rel="stylesheet" href="css/provider.css">
+
+</head>
+<body style="background-image: url('images/farmer-banner.jpg'); background-size: cover;">
+    <header>
+        <img src="images/logo.png" alt="KrishiConnect Logo">
+        
+        <nav>
+            <a href="index.html" class="btn">Home</a>
+            <a href="farmer.html" class="btn">Book a Service</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Register Your Equipment</h1>
+       <form action="bookingp.html" method="get">
+
+
+  <input type="hidden" name="user" value="provider">
+
+  <label for="ownerName">Owner Name:</label>
+  <input type="text" id="ownerName" name="ownerName" required>
+
+  <label for="equipmentType">Equipment Type:</label>
+  <select name="equipmentType" required>
+    <option value="">Select</option>
+    <option value="Tractor">Tractor</option>
+    <option value="Trolley">Trolley</option>
+    <option value="Sprayer">Sprayer</option>
+    <option value="Harvester">Harvester</option>
+  </select>
+
+  <label for="location">Location:</label>
+  <input type="text" id="location" name="location" required>
+
+  <label for="startDate">Start Date:</label>
+  <input type="date" name="startDate" required>
+
+  <label for="endDate">End Date:</label>
+  <input type="date" name="endDate" required>
+
+  <label for="startTime">Start Time:</label>
+  <input type="time" name="startTime" required>
+
+  <label for="endTime">End Time:</label>
+  <input type="time" name="endTime" required>
+
+  <label for="mobile">Mobile Number:</label>
+  <input type="tel" name="mobile" pattern="[0-9]{10}" maxlength="10" required>
+
+  <label for="price">Expected Price (₹):</label>
+  <input type="number" name="price" required>
+
+  <button type="submit" class="btn">Register Equipment</button>
+</form>
+
+        <div id="otpSection" style="display: none; margin-top: 2rem;">
+  <p>Enter OTP sent to your mobile number:</p>
+  <input type="text" id="otpInput" maxlength="4" pattern="[0-9]{4}" placeholder="Enter 4-digit OTP">
+
+
+  
+ <button type="submit" class="btn">Register Equipment</button>
+
+  <p id="otpMessage" style="color: green; display: none;">✅ Equipment Registered Successfully!</p>
+</div>
+
+    </main>
+</body>
+</html>

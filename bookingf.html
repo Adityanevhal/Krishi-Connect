@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KrishiConnect - Booking Summary</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="KrishiConnect Logo" class="logo">
+    <a href="index.html" class="btn">Home</a>
+  </header>
+
+  <main class="overlay">
+    <h1>Booking Summary</h1>
+
+    <!-- Booking Details -->
+    <div id="detailsBox" class="booking-form"></div>
+
+    <!-- OTP Section -->
+    <div id="otpSection" class="otp-box" style="display: none;">
+      <p><span class="emoji">📩</span> Enter the 4-digit OTP sent to your mobile:</p>
+      <div class="otp-input-group">
+        <input type="text" id="otpInput" maxlength="4" pattern="[0-9]{4}" placeholder="----" />
+        <button class="btn" onclick="verifyOTP()">✅ Verify</button>
+      </div>
+      <p id="otpMsg" class="success-msg"></p>
+    </div>
+
+    <!-- Loader (hidden initially) -->
+    <div id="loader" class="loader-box" style="display: none;">
+      <div class="road">
+        <img src="images/tractor-trolley.jpg" class="tractor" alt="Tractor" />
+        <div class="smoke"></div>
+        <p>Processing your booking...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const detailsBox = document.getElementById("detailsBox");
+
+    let html = `
+      <p><strong>Service:</strong> ${params.get("service")}</p>
+      <p><strong>Location:</strong> ${params.get("location")}</p>
+    `;
+
+    if (params.get("service") === "Transport") {
+      html += `
+        <p><strong>From:</strong> ${params.get("from")}</p>
+        <p><strong>To:</strong> ${params.get("to")}</p>
+      `;
+    } else {
+      html += `
+        <p><strong>Land Area:</strong> ${params.get("area")} acres</p>
+        <p><strong>Contact:</strong> ${params.get("contact")}</p>
+      `;
+    }
+
+    html += `<p><strong>Date:</strong> ${params.get("date")}</p>`;
+
+    const area = parseFloat(params.get("area")) || 0;
+    const quote = params.get("service") === "Transport" ? 500 : 300 + area * 50;
+    html += `<p><strong>Estimated Quote:</strong> ₹${quote.toFixed(2)}</p>`;
+
+    // Add confirm OTP button
+    html += `<button class="btn" onclick="document.getElementById('otpSection').style.display='block'">Confirm via OTP</button>`;
+
+    detailsBox.innerHTML = html;
+
+    function verifyOTP() {
+      const otp = document.getElementById("otpInput").value;
+      const msg = document.getElementById("otpMsg");
+
+      if (otp === "1234") {
+        msg.style.display = "none";
+        document.getElementById("otpSection").style.display = "none";
+        document.getElementById("loader").style.display = "flex";
+
+        setTimeout(() => {
+          window.location.href = `thankyouf.html?quote=${quote}`;
+        }, 3000);
+      } else {
+        msg.style.display = "block";
+        msg.innerText = "❌ Invalid OTP. Please try again.";
+        msg.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiConnect - Book a Service</title>
+    <link rel="stylesheet" href="css/farmer.css">
+</head>
+<body style="background-image: url('images/farmer-banner.jpg'); background-size: cover;"></body>
+    <header>
+        <img src="images/logo.png" alt="KrishiConnect Logo">
+        <a href="index.html" class="btn">Home</a>
+        
+    </header>
+
+    <div class="overlay">
+        <h1>👨‍🌾 Book a Farming Service</h1>
+        <p>Select your required service, location and timing.</p>
+<form action="bookingf.html" method="get">
+    <label for="service">Select Service:</label>
+    <select id="service" name="service" onchange="toggleFields()" required>
+        <option value="">-- Choose --</option>
+        <option value="Plowing">Plowing</option>
+        <option value="Seeding">Seeding</option>
+        <option value="Harvesting">Harvesting</option>
+        <option value="Spraying">Spraying</option>
+        <option value="Transport">Transport</option>
+    </select>
+
+    <!-- COMMON FIELD -->
+    <label for="location">Your Area / Village / PIN:</label>
+    <input type="text" id="location" name="location" required>
+
+    <!-- FOR TRANSPORT -->
+    <div id="transportFields" style="display:none;">
+        <label for="from">From Location:</label>
+        <input type="text" id="from" name="from">
+
+        <label for="to">To Location:</label>
+        <input type="text" id="to" name="to">
+    </div>
+
+    <!-- FOR OTHER SERVICES -->
+    <div id="farmingFields" style="display:none;">
+        <label for="area">Land Area (in acres):</label>
+        <input type="number" id="area" name="area" min="0.1" step="0.1">
+
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" placeholder="10-digit mobile no." pattern="[0-9]{10}" maxlength="10" required>
+    </div>
+
+    <label for="date">Service Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <button type="submit" class="btn">Get Quote</button>
+</form>
+
+    </div>
+
+    <script>
+        function toggleFields() {
+            const service = document.getElementById('service').value;
+            const transport = document.getElementById('transportFields');
+            const farming = document.getElementById('farmingFields');
+
+            if (service === "Transport") {
+                transport.style.display = 'block';
+                farming.style.display = 'none';
+            } else if (service) {
+                transport.style.display = 'none';
+                farming.style.display = 'block';
+            } else {
+                transport.style.display = 'none';
+                farming.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KrishiConnect - Provider Confirmation</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="KrishiConnect Logo" class="logo" />
+    <a href="index.html" class="btn">Home</a>
+  </header>
+
+  <main class="overlay">
+    <h1>Registration Summary</h1>
+
+    <!-- Provider Details -->
+    <div id="detailsBox" class="booking-form"></div>
+
+    <!-- OTP Section -->
+    <div id="otpSection" class="otp-box" style="display: none;">
+      <p><span class="emoji">📩</span> Enter the 4-digit OTP sent to your mobile:</p>
+      <div class="otp-input-group">
+        <input type="text" id="otpInput" maxlength="4" pattern="[0-9]{4}" placeholder="----" />
+        <button class="btn" onclick="verifyOTP()">✅ Verify</button>
+      </div>
+      <p id="otpMsg" class="success-msg"></p>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader" class="loader-box" style="display: none;">
+      <div class="road">
+        <img src="images/tractor-trolley.png" class="tractor" alt="Tractor" />
+        <div class="smoke"></div>
+        <p>Registering your service...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const detailsBox = document.getElementById("detailsBox");
+
+    let html = `
+      <p><strong>Owner Name:</strong> ${params.get("ownerName")}</p>
+      <p><strong>Equipment Type:</strong> ${params.get("equipmentType")}</p>
+      <p><strong>Location:</strong> ${params.get("location")}</p>
+      <p><strong>Available:</strong> ${params.get("startDate")} ${params.get("startTime")} to ${params.get("endDate")} ${params.get("endTime")}</p>
+      <p><strong>Mobile:</strong> ${params.get("mobile")}</p>
+      <p><strong>Rental Price:</strong> ₹${params.get("price")}</p>
+    `;
+
+    html += `<button class="btn" onclick="document.getElementById('otpSection').style.display='block'">Confirm via OTP</button>`;
+    detailsBox.innerHTML = html;
+
+    function verifyOTP() {
+      const otp = document.getElementById("otpInput").value;
+      const msg = document.getElementById("otpMsg");
+
+      if (otp === "1234") {
+        msg.style.display = "none";
+        document.getElementById("otpSection").style.display = "none";
+        document.getElementById("loader").style.display = "flex";
+
+        setTimeout(() => {
+          window.location.href = `thankyoup.html`;
+        }, 3000);
+      } else {
+        msg.style.display = "block";
+        msg.innerText = "❌ Invalid OTP. Please try again.";
+        msg.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

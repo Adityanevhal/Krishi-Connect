@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment - KrishiConnect</title>
+  <link rel="stylesheet" href="css/thankyou.css" />
+</head>
+<body>
+
+  <h1 class="thank-you">✅ Thank You for Booking with KrishiConnect!</h1>
+
+  <div class="amount-box">
+    <h2>Advance Payment (20%):</h2>
+    <p><strong>₹<span id="advance">...</span></strong></p>
+  </div>
+
+  <div class="qr-section">
+    <p>Scan the UPI QR Code to pay:</p>
+    <img src="images/qr.jpg" alt="UPI QR">
+  </div>
+
+  <div class="pay-options">
+    <p>More payment options:</p>
+    <img src="images/UPI.png" alt="Google Pay">
+    <img src="images/card.jpg" alt="PhonePe">
+    <img src="images/wallet.png" alt="Paytm">
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const quote = parseFloat(params.get("quote"));
+    const advance = quote ? Math.round(quote * 0.20) : 0;
+    document.getElementById("advance").textContent = advance;
+  </script>
+
+</body>
+</html>

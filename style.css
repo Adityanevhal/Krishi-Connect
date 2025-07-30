@@ -1,0 +1,187 @@
+/* GENERAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #f9fbe7, #dcedc8);
+  color: #33691e;
+  min-height: 100vh;
+}
+.tagline {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgb(22, 40, 28);
+  margin-left: 10px;
+  font-style: italic;
+}
+
+/* HEADER */
+header {
+  background-color: #8bc34a;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header img {
+  height: 50px;
+}
+
+/* BUTTON */
+.btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #388e3c;
+}
+
+/* MAIN OVERLAY */
+.overlay {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(177, 212, 200, 0.7);
+  border-radius: 12px;
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* HOMEPAGE BUTTON OPTIONS */
+.options {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* BOOKING FORM */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  width: 100%;
+  background-color: #ffffffcc;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form label {
+  font-weight: bold;
+  margin-top: 1rem;
+  display: block;
+  color: #33691e;
+}
+
+.booking-form input,
+.booking-form select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* SERVICES GALLERY */
+.services-gallery {
+  padding: 2rem;
+  text-align: center;
+}
+
+.service-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.service-images div {
+  width: 200px;
+  height: 220px;
+  text-align: center;
+}
+
+.service-images img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.service-images p {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #2e7d32;
+  font-size: 1.1rem;
+}
+.otp-box {
+  background-color: #c8e6c9;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+}
+
+.otp-box .emoji {
+  font-size: 1.3rem;
+  margin-right: 0.4rem;
+}
+
+.otp-input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#otpInput {
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  width: 100px;
+  text-align: center;
+  border: 2px solid #4caf50;
+  border-radius: 6px;
+  outline: none;
+}
+
+.success-msg {
+  display: none;
+  margin-top: 1rem;
+  color: green;
+  font-weight: bold;
+}
