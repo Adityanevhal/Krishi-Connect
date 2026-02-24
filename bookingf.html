@@ -57,9 +57,7 @@
     const area = parseFloat(params.get("area")) || 0;
     const quote = params.get("service") === "Transport" ? 500 : 300 + area * 50;
     html += `<p><strong>Estimated Quote:</strong> ₹${quote.toFixed(2)}</p>`;
-
-    // Add confirm OTP button
-    html += `<button class="btn" onclick="document.getElementById('otpSection').style.display='block'">Confirm via OTP</button>`;
+html += `<button class="btn" onclick="document.getElementById('otpSection').style.display='block'">Confirm via OTP</button>`;
 
     detailsBox.innerHTML = html;
 
@@ -84,5 +82,6 @@
   </script>
 </body>
 </html>
+
 
 
